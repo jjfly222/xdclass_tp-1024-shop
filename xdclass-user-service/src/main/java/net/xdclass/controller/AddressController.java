@@ -33,8 +33,8 @@ public class AddressController {
     @ApiOperation("根据id查找地址详情")
     @GetMapping("/find/{address_id}")
     public Object detail(
-                            @ApiParam(value = "地址id",required = true)
-                             @PathVariable("address_id") long addressId){
+            @ApiParam(value = "地址id",required = true)
+            @PathVariable("address_id") long addressId){
 
         return addressService.detail(addressId);
     }
