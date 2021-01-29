@@ -1,7 +1,7 @@
-package net.xdclass.service.impl;
+package net.xdclass.component.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import net.xdclass.service.MailService;
+import net.xdclass.component.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;

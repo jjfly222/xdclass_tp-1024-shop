@@ -1,4 +1,4 @@
-package net.xdclass.service;
+package net.xdclass.component;
 
 public interface MailService {
 
