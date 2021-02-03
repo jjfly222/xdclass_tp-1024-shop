@@ -8,7 +8,9 @@ import net.xdclass.model.UserDO;
 import net.xdclass.request.UserRegisterRequest;
 import net.xdclass.service.NotifyService;
 import net.xdclass.service.UserService;
+import net.xdclass.util.CommonUtil;
 import net.xdclass.util.JsonData;
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +72,12 @@ public class UserServiceImpl implements UserService {
 
         //设置密码 TODO
         //userDO.setPwd(registerRequest.getPwd());
+        //生成秘钥 盐
+        userDO.setSecret("$1$"+CommonUtil.getStringNumRandom(8));
+
+        //密码+盐处理
+        String cryptPwd = Md5Crypt.md5Crypt(registerRequest.getPwd().getBytes(),userDO.getSecret());
+        userDO.setPwd(cryptPwd);
 
         //账号唯一性检查  TODO
 
@@ -93,7 +101,7 @@ public class UserServiceImpl implements UserService {
      */
     private boolean checkUnique(String mail) {
 
-        return false;
+        return true;
     }
 
 
